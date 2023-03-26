@@ -2,10 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
+#include <QPushButton>
+#include <QLabel>
+#include <QFileDialog>
+#include <QHBoxLayout>
 
 class MainWindow : public QMainWindow
 {
@@ -15,7 +15,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void selectImage();
+    void selectFolder();
 private:
-    Ui::MainWindow *ui;
+    QPushButton *selectButton;
+    QPushButton *selectButtonFolder;
+    QLabel *imageLabel;
+    QHBoxLayout *layout;
 };
+
 #endif // MAINWINDOW_H
