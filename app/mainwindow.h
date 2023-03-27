@@ -6,6 +6,8 @@
 #include <QLabel>
 #include <QFileDialog>
 #include <QHBoxLayout>
+#include <QDirIterator>
+#include <QMenuBar>
 
 class MainWindow : public QMainWindow
 {
@@ -18,11 +20,17 @@ public:
 private slots:
     void selectImage();
     void selectFolder();
+    void displayImage(QString imagePath);
+    void nextImage();
+    void previousImage();
 private:
     QPushButton *selectButton;
-    QPushButton *selectButtonFolder;
+    QPushButton *selectFolderButton;
+    QPushButton *nextImageButton;
+    QPushButton *previousImageButton;
     QLabel *imageLabel;
     QHBoxLayout *layout;
+    int currentIndex = 0;
 };
 
 #endif // MAINWINDOW_H

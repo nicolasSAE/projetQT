@@ -5,6 +5,7 @@
  mmc:Q_OBJECT
  mdp:/home/nbasquin/projetQT/app/mainwindow.h
  mdp:/home/nbasquin/projetQT/build-app-Desktop_Qt_6_4_2_GCC_64bit-Debug/app_autogen/moc_predefs.h
+ mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/QDirIterator
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qalgorithms.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qanystringview.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qarraydata.h
@@ -32,6 +33,7 @@
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qdatetime.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qdebug.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qdir.h
+ mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qdiriterator.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qfile.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qfiledevice.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qfileinfo.h
@@ -127,6 +129,7 @@
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/QHBoxLayout
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/QLabel
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/QMainWindow
+ mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/QMenuBar
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/QPushButton
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qabstractbutton.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qboxlayout.h
@@ -138,6 +141,8 @@
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qlayout.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qlayoutitem.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qmainwindow.h
+ mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qmenu.h
+ mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qmenubar.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qpushbutton.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qsizepolicy.h
  mdp:/home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h
