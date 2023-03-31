@@ -59,16 +59,18 @@ MainWindow::~MainWindow()
 
 // Fonction pour afficher une image dans le QLabel
 void MainWindow::displayImage(QString imagePath) {
-    QPixmap image(imagePath);
-    imageLabel->setPixmap(image);
-    selectButton->hide();
-    selectFolderButton->hide();
+    if(!imagePath.isEmpty()) {
+        QPixmap image(imagePath);
+        imageLabel->setPixmap(image);
+        selectButton->hide();
+        selectFolderButton->hide();
+    }
 }
 
 void MainWindow::selectImage()
 {
     // Get the path of the selected image file
-    QString imagePath = QFileDialog::getOpenFileName(this, tr("Open Image"), "", tr("Image Files (*.png *.jpg *.bmp)"));
+    QString imagePath = QFileDialog::getOpenFileName(this, tr("Open Image"), "", tr("Image Files (*.png *.jpg *.jpeg *.JPG *.gif)"));
 
     displayImage(imagePath);
 }
@@ -76,7 +78,12 @@ void MainWindow::selectImage()
 QStringList imagesPathList;
 void MainWindow::selectFolder() {
     QString folderPath = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    QDirIterator it(folderPath, QStringList() << "*.png" << "*.jpg" << "*.bmp", QDir::Files, QDirIterator::Subdirectories);
+
+    if (folderPath.isEmpty()) {
+            return;
+    }
+
+    QDirIterator it(folderPath, QStringList() << "*.png" << "*.jpg" << "*jpeg" << "*.JPG" << "*.gif", QDir::Files, QDirIterator::Subdirectories);
 
     // Vide la liste précédente pour charger les images du nouveau dossier sélectionné
     imagesPathList.clear();
