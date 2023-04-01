@@ -5,12 +5,12 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QFileDialog>
-#include <QHBoxLayout>
 #include <QDirIterator>
 #include <QMenuBar>
+#include <QHBoxLayout>
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow{
+
     Q_OBJECT
 
 public:
@@ -21,15 +21,15 @@ private slots:
     void selectImage();
     void selectFolder();
     void displayImage(QString imagePath);
-    void nextImage();
     void previousImage();
+    void nextImage();
+
 private:
-    QPushButton *selectButton;
+    QPushButton *selectImageButton;
     QPushButton *selectFolderButton;
-    QPushButton *nextImageButton;
     QPushButton *previousImageButton;
+    QPushButton *nextImageButton;
     QLabel *imageLabel;
-    QHBoxLayout *layout;
     int currentIndex = 0;
 };
 

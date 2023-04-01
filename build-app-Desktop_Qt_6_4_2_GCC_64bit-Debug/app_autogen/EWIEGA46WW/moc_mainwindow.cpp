@@ -34,8 +34,8 @@ struct qt_meta_stringdata_MainWindow_t {
     char stringdata3[13];
     char stringdata4[13];
     char stringdata5[10];
-    char stringdata6[10];
-    char stringdata7[14];
+    char stringdata6[14];
+    char stringdata7[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_MainWindow_t::offsetsAndSizes) + ofs), len 
@@ -47,8 +47,8 @@ Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_Main
         QT_MOC_LITERAL(24, 12),  // "selectFolder"
         QT_MOC_LITERAL(37, 12),  // "displayImage"
         QT_MOC_LITERAL(50, 9),  // "imagePath"
-        QT_MOC_LITERAL(60, 9),  // "nextImage"
-        QT_MOC_LITERAL(70, 13)   // "previousImage"
+        QT_MOC_LITERAL(60, 13),  // "previousImage"
+        QT_MOC_LITERAL(74, 9)   // "nextImage"
     },
     "MainWindow",
     "selectImage",
@@ -56,8 +56,8 @@ Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_Main
     "selectFolder",
     "displayImage",
     "imagePath",
-    "nextImage",
-    "previousImage"
+    "previousImage",
+    "nextImage"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -108,9 +108,9 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'displayImage'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
-        // method 'nextImage'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'previousImage'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'nextImage'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -125,8 +125,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->selectImage(); break;
         case 1: _t->selectFolder(); break;
         case 2: _t->displayImage((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 3: _t->nextImage(); break;
-        case 4: _t->previousImage(); break;
+        case 3: _t->previousImage(); break;
+        case 4: _t->nextImage(); break;
         default: ;
         }
     }

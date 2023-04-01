@@ -3,128 +3,128 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    // Création des menus
     QMenuBar *menuBar = new QMenuBar(this);
-    QMenu *fileMenu = new QMenu(tr("&Fichier"), this);
-    QAction *openAction = new QAction(tr("&Ouvrir"), this);
-    QAction *quitAction = new QAction(tr("&Quitter"), this);
+    QMenu *menuFichier = new QMenu(tr("&Fichier"), this);
+    QMenu *ouvrir = new QMenu(tr("&Ouvrir"), this);
+    QAction *openActionImage = new QAction(tr("&Image"), this);
+    QAction *openActionFolder = new QAction(tr("&Dossier"), this);
 
-    // Create the select button
-    selectButton = new QPushButton("Select Image", this);
-    selectFolderButton = new QPushButton("Select Folder", this);
-    nextImageButton = new QPushButton("Next", this);
-    previousImageButton = new QPushButton("Previous", this);
-
-    fileMenu->addAction(openAction);
-    fileMenu->addAction(quitAction);
-    menuBar->addMenu(fileMenu);
+    // Initialisation de l'architecture des menus
     setMenuBar(menuBar);
+    menuBar->addMenu(menuFichier);
+    menuFichier->addMenu(ouvrir);
+    ouvrir->addAction(openActionImage);
+    ouvrir->addAction(openActionFolder);
 
-    // Create the image label
+    // Connexion des menus aux fonctions
+    connect(openActionImage, &QAction::triggered, this, &MainWindow::selectImage);
+    connect(openActionFolder, &QAction::triggered, this, &MainWindow::selectFolder);
+
+    // Création des boutons
+    selectImageButton = new QPushButton("Select Image", this);
+    selectFolderButton = new QPushButton("Select Folder", this);
+    previousImageButton = new QPushButton("Previous", this);
+    nextImageButton = new QPushButton("Next", this);
+
+    // Création de la zone d'image
     imageLabel = new QLabel(this);
-    imageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-    imageLabel->setScaledContents(true);
 
-    // Create the layout and add the select button and image label
-    layout = new QHBoxLayout();
-    layout->addWidget(selectButton);
-    layout->addWidget(selectFolderButton);
-    layout->addWidget(nextImageButton);
-    layout->addWidget(previousImageButton);
-    layout->addWidget(imageLabel);
+    // Création du layout des boutons previous et next
+    QHBoxLayout *buttonsLayout = new QHBoxLayout();
+    buttonsLayout->addStretch();
+    buttonsLayout->addWidget(previousImageButton);
+    buttonsLayout->addWidget(nextImageButton);
+    buttonsLayout->addStretch();
 
-    // Set the layout of the main window
+    // Création du layout des boutons select
+    QVBoxLayout *mainLayout = new QVBoxLayout();
+    mainLayout->addWidget(imageLabel);
+    mainLayout->addWidget(selectImageButton);
+    mainLayout->addWidget(selectFolderButton);
+    mainLayout->addStretch();
+    mainLayout->addLayout(buttonsLayout);
+
+    // Initialisation du layout de mainWindow
     QWidget *widget = new QWidget(this);
-    widget->setLayout(layout);
+    widget->setLayout(mainLayout);
     setCentralWidget(widget);
-
-    nextImageButton->hide();
+    // cache les boutons previous et next tant qu'un dossier n'a pas été sélectionné
     previousImageButton->hide();
+    nextImageButton->hide();
 
-    // Connecte l'action "Ouvrir" à une méthode de votre classe MainWindow
-    connect(openAction, &QAction::triggered, this, &MainWindow::selectImage);
-
-    // Connecte l'action "Quitter" à la méthode "close" de la classe QMainWindow
-    connect(quitAction, &QAction::triggered, this, &QMainWindow::close);
-
-    // Connect the select button to the selectImage slot
-    connect(selectButton, &QPushButton::clicked, this, &MainWindow::selectImage);
+    // Connexion des boutons aux fonctions
+    connect(selectImageButton, &QPushButton::clicked, this, &MainWindow::selectImage);
     connect(selectFolderButton, &QPushButton::clicked, this, &MainWindow::selectFolder);
-    connect(nextImageButton, &QPushButton::clicked, this, &MainWindow::nextImage);
     connect(previousImageButton, &QPushButton::clicked, this, &MainWindow::previousImage);
+    connect(nextImageButton, &QPushButton::clicked, this, &MainWindow::nextImage);
 }
 
 MainWindow::~MainWindow()
 {
 }
 
-// Fonction pour afficher une image dans le QLabel
-void MainWindow::displayImage(QString imagePath) {
-    if(!imagePath.isEmpty()) {
-        QPixmap image(imagePath);
-        imageLabel->setPixmap(image);
-        selectButton->hide();
+// Fonction d'affichage de l'image dans le Qlabel
+void MainWindow::displayImage(QString imagePath){
+    if(!imagePath.isEmpty()){
+        QImage image(imagePath);
+        imageLabel->setPixmap(QPixmap::fromImage(image));
+        selectImageButton->hide();
         selectFolderButton->hide();
+        // Adaptation de la taille de la fenêtre en fonction de la taille de l'image
+        int width = image.size().width();
+        int height = image.size().height();
+        setFixedSize(width, height);
     }
 }
 
-void MainWindow::selectImage()
-{
-    // Get the path of the selected image file
+// Fonction pour choisir une image précise
+void MainWindow::selectImage(){
     QString imagePath = QFileDialog::getOpenFileName(this, tr("Open Image"), "", tr("Image Files (*.png *.jpg *.jpeg *.JPG *.gif)"));
-
     displayImage(imagePath);
 }
 
+// Fonction pour choisir un dossier
 QStringList imagesPathList;
-void MainWindow::selectFolder() {
+void MainWindow::selectFolder(){
     QString folderPath = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-
-    if (folderPath.isEmpty()) {
-            return;
+    if (folderPath.isEmpty()){
+        return;
     }
-
     QDirIterator it(folderPath, QStringList() << "*.png" << "*.jpg" << "*jpeg" << "*.JPG" << "*.gif", QDir::Files, QDirIterator::Subdirectories);
-
     // Vide la liste précédente pour charger les images du nouveau dossier sélectionné
     imagesPathList.clear();
-
-    // Ajoute chaque chemin d'accès d'image dans la liste
-    while (it.hasNext()) {
+    // Ajoute chaques paths dans la liste
+    while (it.hasNext()){
         imagesPathList.append(it.next());
     }
-
-    // Initialise l'index de l'image affichée à 0 (la première image)
+    // Initialise l'index de l'image affichée à 0
     currentIndex = 0;
-
-    // Affiche la première image
     displayImage(imagesPathList[currentIndex]);
-
     nextImageButton->show();
     previousImageButton->show();
 }
 
-void MainWindow::previousImage() {
-    // Diminue l'index de l'image affichée de 1
+// Fonction pour parcourir le dossier vers l'arrière
+void MainWindow::previousImage(){
+    if (imagesPathList.empty()){
+        return;
+    }
     currentIndex--;
-
-    // Si on arrive au début de la liste, on revient à la fin
-    if (currentIndex < 0) {
+    if (currentIndex < 0){
         currentIndex = imagesPathList.count() - 1;
     }
-
-    // Affiche l'image précédente
     displayImage(imagesPathList[currentIndex]);
 }
 
-void MainWindow::nextImage() {
-    // Vérifiez s'il y a des images à afficher
-    if (imagesPathList.empty()) {
+// Fonction pour parcourir le dossier vers l'avant
+void MainWindow::nextImage(){
+    if (imagesPathList.empty()){
         return;
     }
-
-    // Avancez dans la liste des images et affichez la prochaine image
-    currentIndex = (currentIndex + 1) % imagesPathList.size();
-    QPixmap image(imagesPathList[currentIndex]);
-    imageLabel->setPixmap(image);
+    currentIndex++;
+    if (currentIndex >= imagesPathList.count()){
+        currentIndex = 0;
+    }
+    displayImage(imagesPathList[currentIndex]);
 }
-
