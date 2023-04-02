@@ -8,6 +8,8 @@
 #include <QDirIterator>
 #include <QMenuBar>
 #include <QHBoxLayout>
+#include <QMessageBox>
+#include <QPainter>
 
 class MainWindow : public QMainWindow{
 
@@ -23,6 +25,12 @@ private slots:
     void displayImage(QString imagePath);
     void previousImage();
     void nextImage();
+    void makeImageTransparent();
+    void saveImage();
+    void increaseSaturation();
+    void decreaseSaturation();
+    void increaseContrast();
+    void decreaseContrast();
 
 private:
     QPushButton *selectImageButton;

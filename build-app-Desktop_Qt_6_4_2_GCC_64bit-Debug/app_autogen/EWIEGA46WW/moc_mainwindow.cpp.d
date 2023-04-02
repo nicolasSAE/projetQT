@@ -94,6 +94,7 @@
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qvariant.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qvarlengtharray.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtCore/qversiontagging.h \
+  /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/QPainter \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qaction.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qbitmap.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qbrush.h \
@@ -106,7 +107,9 @@
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qimage.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qkeysequence.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qpaintdevice.h \
+  /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qpainter.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qpalette.h \
+  /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qpen.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qpicture.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qpixelformat.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qpixmap.h \
@@ -115,6 +118,7 @@
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qrgb.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qrgba64.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qtextdocument.h \
+  /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qtextoption.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qtgui-config.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qtguiexports.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtGui/qtguiglobal.h \
@@ -125,6 +129,7 @@
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/QLabel \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/QMainWindow \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/QMenuBar \
+  /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/QMessageBox \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/QPushButton \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qabstractbutton.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qboxlayout.h \
@@ -138,6 +143,7 @@
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qmainwindow.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qmenu.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qmenubar.h \
+  /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qmessagebox.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qpushbutton.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qsizepolicy.h \
   /home/nbasquin/Qt/6.4.2/gcc_64/include/QtWidgets/qtabwidget.h \
